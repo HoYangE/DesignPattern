@@ -8,13 +8,12 @@ class Duck
 {
 	FlyBehavior* flyBehavior;
 	QuackBehavior* quackBehavior;
-	Duck* duck;
 
 public:
-	Duck() {}
-	~Duck() {}
+	Duck() { flyBehavior = nullptr; quackBehavior = nullptr; }
+	~Duck() { delete flyBehavior; delete quackBehavior; }
 	void swim() { cout << "Ç³µ¢Ç³µ¢" << endl; }
-	virtual void display() { duck->display(); }
+	virtual void display() { }
 	void performQuack() { quackBehavior->quack(); }
 	void performFly() { flyBehavior->fly(); }
 	void setFlyBehavior(FlyBehavior* fly) { flyBehavior = fly; }

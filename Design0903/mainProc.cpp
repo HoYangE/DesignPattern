@@ -8,40 +8,37 @@
 
 int main()
 {
-	FlyBehavior* Dofly = new FlyWithWings();
-	FlyBehavior* Cantfly = new FlyNoWay();
-	QuackBehavior* DoQuack = new Quack();
-	QuackBehavior* DoSquack = new Squack();
-	QuackBehavior* CantSquack = new MuteQuack();
-
 	Duck* mallard = new MallardDuck();
-	Duck* redhead = new RedheadDuck();
-	Duck* rubber = new RubberDuck();
-	Duck* decoy = new DecoyDuck();
-
 	mallard->display();
-	mallard->setFlyBehavior(Dofly);
-	mallard->setQuackBehavior(DoQuack);
+	mallard->setFlyBehavior(new FlyWithWings());
+	mallard->setQuackBehavior(new Quack());
 	mallard->performFly();
 	mallard->performQuack();
+	delete mallard;
 
+	Duck* redhead = new RedheadDuck();
 	redhead->display();
-	redhead->setFlyBehavior(Dofly);
-	redhead->setQuackBehavior(DoQuack);
+	redhead->setFlyBehavior(new FlyWithWings());
+	redhead->setQuackBehavior(new Quack());
 	redhead->performFly();
 	redhead->performQuack();
+	delete redhead;
 
+	Duck* rubber = new RubberDuck();
 	rubber->display();
-	rubber->setFlyBehavior(Cantfly);
-	rubber->setQuackBehavior(DoSquack);
+	rubber->setFlyBehavior(new FlyNoWay());
+	rubber->setQuackBehavior(new Quack());
 	rubber->performFly();
 	rubber->performQuack();
+	delete rubber;
 
+	Duck* decoy = new DecoyDuck();
 	decoy->display();
-	decoy->setFlyBehavior(Cantfly);
-	decoy->setQuackBehavior(CantSquack);
+	decoy->setFlyBehavior(new FlyNoWay());
+	decoy->setQuackBehavior(new MuteQuack());
 	decoy->performFly();
 	decoy->performQuack();
+	delete decoy;
 
 	return 0;
 }
